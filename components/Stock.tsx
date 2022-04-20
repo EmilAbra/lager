@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import config from "../config/config.json";
+import { Text, View } from 'react-native';
+import { Typography } from '../styles';
+import productsModel from "../models/products.ts";
 
-function StockList() {
-    const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        fetch(`${config.base_url}/products?api_key=${config.api_key}`)
-        .then(response => response.json())
-        .then(result => setProducts(result.data));
+function StockList({products, setProducts}) {
+    useEffect( async () => {
+        setProducts(await productsModel.getProducts());
     }, []);
 
-    const list = products.map((product, index) => <Text style={ styles.list } key={index}>{ product.name } - { product.stock }</Text>);
+    const list = products.map((product, index) => {
+        return <Text
+                style={Typography.normal}
+                key={index}>
+                    { product.name } - { product.stock }
+                </Text>
+    });
 
     return (
         <View>
@@ -20,27 +24,11 @@ function StockList() {
     );
 }
 
-export default function Stock() {
+export default function Stock({products, setProducts}) {
     return (
         <View>
-            <Text style={styles.header}>Lagerförteckning</Text>
-            <StockList/>
+            <Text style={Typography.header2}>Lagerförteckning</Text>
+            <StockList products={products} setProducts={setProducts}/>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    header: {
-        color: '#333',
-        fontSize: 24,
-        paddingLeft: 12,
-        marginTop: 0,
-        marginBottom: 10
-    },
-    list: {
-        paddingLeft: 12,
-        fontSize: 17,
-        marginBottom: 10,
-        color: '#444'
-    }
-});
