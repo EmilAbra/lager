@@ -25,7 +25,7 @@ export default function OrderList({ route, navigation }) {
     const listOfOrders = allOrders
         .filter(order => order.status === "Ny")
         .map((order, index) => {
-            return <View style={Base.button}>
+            return <View style={Base.button} key={index}>
                 <Button
                 title={order.name}
                 key={index}
@@ -40,7 +40,7 @@ export default function OrderList({ route, navigation }) {
 
     return (
         <ScrollView  style={Base.base}>
-            <Text style={Typography.header1}>Ordrar redo att plockas</Text>
+            <Text style={Typography.header2}>Ordrar redo att plockas</Text>
             {listOfOrders}
         </ScrollView>
     );
