@@ -3,6 +3,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { View, Button } from "react-native";
 import moment from 'moment';
 
+
 export default function DateDropDown(props) {
     const [dropDownDate, setDropDownDate] = useState<Date>(new Date());
     const [show, setShow] = useState<Boolean>(false);
@@ -24,15 +25,16 @@ export default function DateDropDown(props) {
                             return;
                         }
                         setDropDownDate(value);
-                           props.setDelivery({
-                               ...props.delivery,
-                               delivery_date:
-                               moment(dropDownDate).format("YYYY-MM-DD"),
-                           });
 
+                        props.setInvoice({
+                            ...props.invoice,
+                            creation_date:
+                            moment(dropDownDate).format("YYYY-MM-DD"),
+                        });
                         setShow(false);
                     }}
                     value={dropDownDate}
+                    selected={new Date()}
                 />
             )}
         </View>

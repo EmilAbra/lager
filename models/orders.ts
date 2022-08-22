@@ -29,9 +29,10 @@ const orders = {
 
         await orders.updateOrder(changedOrder);
     },
-    updateOrder: async function(order) {
+    updateOrder: async function updateOrder(order) {
         try {
-            await fetch(`${config.base_url}/orders?api_key=${config.api_key}`, {
+            order.api_key = config.api_key;
+            await fetch(`${config.base_url}/orders`, {
                 body: JSON.stringify(order),
                 headers: {
                     'content-type': 'application/json'
@@ -39,9 +40,15 @@ const orders = {
                 method: 'PUT'
             });
         } catch (error) {
-            console.log('Could not update order.');
+            console.log(error);
         }
     },
+    getOrder: async function getOrder(order_id) {
+        const response = await fetch(`${config.base_url}/orders/${order_id}?api_key=${config.api_key}`);
+        const result = await response.json();
+
+        return result.data;
+    }
 };
 
 export default orders;

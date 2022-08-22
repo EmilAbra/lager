@@ -17,5 +17,5 @@ export const image = {
 };
 
 export const button = {
-    marginVertical: 20,
+    marginVertical: 20
 };

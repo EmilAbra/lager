@@ -3,7 +3,7 @@ import { Platform, View, Text, ScrollView, Button, TextInput } from "react-nativ
 import { Base, Typography, Forms } from '../styles';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Delivery from '../interfaces/delivery';
-import DateDropDown from './DateDropDown.tsx';
+import DateDropDown from './DeliveryDateDropDown.tsx';
 import ProductDropDown from './ProductDropDown.tsx';
 
 import productModel from "../models/products.ts";

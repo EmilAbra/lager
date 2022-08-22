@@ -15,7 +15,6 @@ const deliveries = {
                 delivery_date: delivery.delivery_date,
                 comment: delivery.comment
             };
-            console.log(deliveryItem);
 
             var json = JSON.stringify(deliveryItem);
             var request = new XMLHttpRequest();
