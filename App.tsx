@@ -3,15 +3,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Home from "./components/Home.tsx";
-import Pick from "./components/Pick.tsx";
-import Auth from "./components/auth/Auth.tsx";
-import Deliveries from "./components/Deliveries.tsx";
-import Invoices from "./components/Invoices.tsx";
+import Home from "./components/Home.js";
+import Pick from "./components/Pick.js";
+import Auth from "./components/auth/Auth.js";
+import Deliveries from "./components/Deliveries.js";
+import Invoices from "./components/Invoices.js";
+import Ship from "./components/ship/Ship.js";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Base } from './styles';
-import authModel from './models/auth.ts';
+import authModel from './models/auth.js';
 
 const routeIcons = {
   "Lager": "home",
@@ -20,7 +21,6 @@ const routeIcons = {
   "Faktura": "clipboard-outline",
   "Logga in": "enter-outline"
 };
-
 
 const Tab = createBottomTabNavigator();
 
@@ -56,9 +56,14 @@ export default function App() {
                         {() => <Deliveries delivery={delivery} setDelivery={setDelivery} />}
                     </Tab.Screen>
                     {isLoggedIn ?
-                        <Tab.Screen name="Faktura">
-                            {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
-                        </Tab.Screen>
+                        <>
+                            <Tab.Screen name="ship">
+                                {() => <Ship />}
+                            </Tab.Screen>
+                            <Tab.Screen name="Faktura">
+                                {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
+                            </Tab.Screen>
+                        </>    
                         :
                         <Tab.Screen name="Logga in">
                             {() => <Auth setIsLoggedIn={setIsLoggedIn} />}
