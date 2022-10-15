@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { View, Text, ScrollView, Button } from "react-native";
 import { Base, Typography } from '../styles';
 
-import config from "./../config/config.json";
 import orderModel from "../models/orders.ts";
 
 

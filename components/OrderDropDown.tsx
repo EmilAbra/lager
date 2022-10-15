@@ -11,11 +11,6 @@ export default function ProductDropDown(props) {
     useEffect(async () => {
         setOrders(await orderModel.getOrders());
     }, []);
-    // console.log(orders);
-    // async function token() {
-    //     let token = await storage.readToken();
-    //     console.log(token);
-    // }
 
     const itemsList = orders
         .filter(order => order.status === "Packad")
