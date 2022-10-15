@@ -5,16 +5,15 @@ import { Base, Typography } from '../styles';
 import orderModel from "../models/orders.ts";
 
 
-export default function OrderList({ route, navigation }) {
+export default function OrderList({ route, navigation, allOrders, setAllOrders }) {
     const { reload } = route.params || false;
-    const [allOrders, setAllOrders] = useState([]);
 
     if (reload) {
         reloadOrders();
     }
 
     async function reloadOrders() {
-        setAllOrders(await orderModel.getOrders())
+        setAllOrders(await orderModel.getOrders());
     }
 
     useEffect( () => {

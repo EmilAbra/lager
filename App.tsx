@@ -28,6 +28,8 @@ export default function App() {
     const [products, setProducts] = useState([]);
     const [delivery, setDelivery] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
+    const [allOrders, setAllOrders] = useState([]);
+
     // console.log(isLoggedIn);
     useEffect(async () => {
         setIsLoggedIn(await authModel.loggedIn());
@@ -50,7 +52,7 @@ export default function App() {
                         {() => <Home products={products} setProducts={setProducts} delivery={delivery} />}
                     </Tab.Screen>
                     <Tab.Screen name="Plock">
-                        {() => <Pick setProducts={setProducts} />}
+                        {() => <Pick setProducts={setProducts} allOrders={allOrders} setAllorders={setAllOrders}/>}
                     </Tab.Screen>
                     <Tab.Screen name="Inleveranser">
                         {() => <Deliveries delivery={delivery} setDelivery={setDelivery} />}
@@ -58,7 +60,7 @@ export default function App() {
                     {isLoggedIn ?
                         <>
                             <Tab.Screen name="ship">
-                                {() => <Ship />}
+                                {() => <Ship allOrders={allOrders} />}
                             </Tab.Screen>
                             <Tab.Screen name="Faktura">
                                 {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
