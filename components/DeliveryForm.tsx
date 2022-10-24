@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Platform, View, Text, ScrollView, Button, TextInput } from "react-native";
+import { Text, ScrollView, Button, TextInput } from "react-native";
 import { Base, Typography, Forms } from '../styles';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import Delivery from '../interfaces/delivery';
 import DateDropDown from './DeliveryDateDropDown.tsx';
 import ProductDropDown from './ProductDropDown.tsx';

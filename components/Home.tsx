@@ -7,8 +7,10 @@ import productsModel from "../models/products.ts";
 
 
 export default function Home({route, products, setProducts, delivery}) {
-    useEffect( async () => {
-        setProducts(await productsModel.getProducts());
+    useEffect(() => {
+        (async () => {
+            setProducts(await productsModel.getProducts());
+        })();
     }, [delivery]);
 
     return (

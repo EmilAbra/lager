@@ -5,7 +5,7 @@ import { Base, Typography } from '../styles';
 import orderModel from "../models/orders.ts";
 
 
-export default function OrderList({ route, navigation, allOrders, setAllOrders }) {
+export default function OrderList({ route, navigation, allOrders, setAllOrders }) {    
     const { reload } = route.params || false;
 
     if (reload) {

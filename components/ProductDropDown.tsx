@@ -7,8 +7,10 @@ export default function ProductDropDown(props) {
 
     let productsHash: any = {};
 
-    useEffect(async () => {
-        setProducts(await productModel.getProducts());
+    useEffect(() => {
+        (async () => {
+            setProducts(await productModel.getProducts());
+        })();
     }, []);
 
     const itemsList = products.map((prod, index) => {

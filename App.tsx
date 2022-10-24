@@ -1,25 +1,26 @@
 import { useState, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
+import FlashMessage from "react-native-flash-message";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Home from "./components/Home.js";
-import Pick from "./components/Pick.js";
-import Auth from "./components/auth/Auth.js";
-import Deliveries from "./components/Deliveries.js";
-import Invoices from "./components/Invoices.js";
-import Ship from "./components/ship/Ship.js";
+import Home from "./components/Home.tsx";
+import Pick from "./components/Pick.tsx";
+import Auth from "./components/auth/Auth.tsx";
+import Deliveries from "./components/Deliveries.tsx";
+import Invoices from "./components/Invoices.tsx";
+import Ship from "./components/ship/Ship.tsx";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Base } from './styles';
-import authModel from './models/auth.js';
+import authModel from './models/auth.ts';
 
 const routeIcons = {
   "Lager": "home",
   "Plock": "list",
   "Inleveranser": "add-circle-outline",
   "Faktura": "clipboard-outline",
-  "Logga in": "enter-outline"
+  "Logga in": "enter-outline",
+  "Skicka": "send-outline"
 };
 
 const Tab = createBottomTabNavigator();
@@ -30,9 +31,11 @@ export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
     const [allOrders, setAllOrders] = useState([]);
 
-    // console.log(isLoggedIn);
-    useEffect(async () => {
-        setIsLoggedIn(await authModel.loggedIn());
+    // console.log("orders" + allOrders);
+    useEffect(() => {
+        (async () => {
+            setIsLoggedIn(await authModel.loggedIn());
+        })();
     }, []);
 
     return (
@@ -52,14 +55,14 @@ export default function App() {
                         {() => <Home products={products} setProducts={setProducts} delivery={delivery} />}
                     </Tab.Screen>
                     <Tab.Screen name="Plock">
-                        {() => <Pick setProducts={setProducts} allOrders={allOrders} setAllorders={setAllOrders}/>}
+                        {() => <Pick setProducts={setProducts} allOrders={allOrders} setAllOrders={setAllOrders}/>}
                     </Tab.Screen>
                     <Tab.Screen name="Inleveranser">
                         {() => <Deliveries delivery={delivery} setDelivery={setDelivery} />}
                     </Tab.Screen>
                     {isLoggedIn ?
                         <>
-                            <Tab.Screen name="ship">
+                            <Tab.Screen name="Skicka" options={{ headerShown: false }}>
                                 {() => <Ship allOrders={allOrders} />}
                             </Tab.Screen>
                             <Tab.Screen name="Faktura">
@@ -74,6 +77,7 @@ export default function App() {
                 </Tab.Navigator>
             </NavigationContainer>
             <StatusBar style="auto" />
+            <FlashMessage position="top" />
         </SafeAreaView>
     );
 }

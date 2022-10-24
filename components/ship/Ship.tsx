@@ -1,15 +1,15 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import ShipList from './ShipList.js';
-import ShipOrder from './ShipOrder.js';
+import ShipList from './ShipList';
+import ShipOrder from './ShipOrder';
 
 const Stack = createNativeStackNavigator();
 
-export default function Ship({ props }) {
+export default function Ship(props) {
     return (
         <Stack.Navigator initialRouteName="List">
             <Stack.Screen name="List">
-                {() => <ShipList allOrders={props.allOrders} />}
+                {(screenProps) => <ShipList {...screenProps} allOrders={props.allOrders} />}
             </Stack.Screen>
             <Stack.Screen name="Order" component={ShipOrder} />
         </Stack.Navigator>

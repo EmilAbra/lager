@@ -4,8 +4,10 @@ import { ScrollView, View, Text, Button } from "react-native";
 import deliveriesModel from "../models/deliveries.ts";
 
 export default function DeliveriesList({ delivery, setDelivery, navigation }) {
-    useEffect( async () => {
-        setDelivery(await deliveriesModel.getDeliveries());
+    useEffect(() => {
+        (async () => {
+            setDelivery(await deliveriesModel.getDeliveries());
+        })();
     }, [delivery]);
 
     let deliveries = !delivery.length ? false : true;

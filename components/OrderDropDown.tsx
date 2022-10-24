@@ -8,8 +8,10 @@ export default function ProductDropDown(props) {
 
     let ordersHash: any = {};
 
-    useEffect(async () => {
-        setOrders(await orderModel.getOrders());
+    useEffect(() => {
+        (async () => {
+            setOrders(await orderModel.getOrders());
+        })();
     }, []);
 
     const itemsList = orders

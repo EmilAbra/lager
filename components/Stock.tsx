@@ -5,8 +5,10 @@ import productsModel from "../models/products.ts";
 
 
 function StockList({products, setProducts}) {
-    useEffect( async () => {
-        setProducts(await productsModel.getProducts());
+    useEffect(() => {
+        (async () => {
+            setProducts(await productsModel.getProducts());
+        })();
     }, []);
 
     const list = products.map((product, index) => {

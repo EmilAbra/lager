@@ -1,8 +1,8 @@
 import { View, Text, ScrollView, Button } from "react-native";
 import { useState, useEffect } from 'react';
 
-import orderModel from "../models/orders.ts";
-import productsModel from "../models/products.ts";
+import orderModel from "../models/orders";
+import productsModel from "../models/products";
 import { Base, Typography } from '../styles';
 
 
@@ -10,8 +10,10 @@ export default function PickList({ route, navigation, setProducts }) {
     const { order } = route.params;
     const [listOfProducts, setListOfProducts] = useState([]);
 
-    useEffect( async () => {
-        setListOfProducts(await productsModel.getProducts());
+    useEffect(() => {
+        (async () => {
+            setListOfProducts(await productsModel.getProducts());
+        })();
     }, []);
 
     async function pick() {

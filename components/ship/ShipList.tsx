@@ -17,7 +17,7 @@ export default function ShipList({navigation, allOrders}) {
                 />
                 </View>
         });
-
+    
     return (
         <ScrollView  style={Base.base}>
             <Text style={Typography.header2}>Ordrar redo att Skickas</Text>

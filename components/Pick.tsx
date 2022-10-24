@@ -9,7 +9,7 @@ export default function Pick(props) {
     return (
         <Stack.Navigator initialRouteName="List">
             <Stack.Screen name="List">
-                {() => <OrderList allOrders={props.allOrders} setAllorders={props.setAllOrders}/>}
+                {(screenProps) => <OrderList {...screenProps} allOrders={props.allOrders} setAllOrders={props.setAllOrders}/>}
             </Stack.Screen>
             <Stack.Screen name="Details">
                 {(screenProps) => <PickList {...screenProps} setProducts={props.setProducts} />}
