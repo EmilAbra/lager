@@ -51,7 +51,7 @@ export default function App() {
                     tabBarInactiveTintColor: 'gray',
                 })}
                 >
-                    <Tab.Screen name="Lager">
+                    <Tab.Screen name="Lager" options={{ headerShown: false }}>
                         {() => <Home products={products} setProducts={setProducts} delivery={delivery} />}
                     </Tab.Screen>
                     <Tab.Screen name="Plock">
