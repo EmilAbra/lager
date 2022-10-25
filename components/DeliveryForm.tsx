@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Text, ScrollView, Button, TextInput } from "react-native";
 import { Base, Typography, Forms } from '../styles';
+import { showMessage } from "react-native-flash-message";
 import Delivery from '../interfaces/delivery';
 import DateDropDown from './DeliveryDateDropDown.tsx';
 import ProductDropDown from './ProductDropDown.tsx';
@@ -67,7 +68,17 @@ export default function DeliveryForm({ navigation }) {
             <Button
                 title="Gör inleverans"
                 onPress = {() => {
-                    addDelivery();
+                    const allFieldsEntered = Object.keys(delivery).length === 4;
+                    if (allFieldsEntered) {
+                        addDelivery();
+                    } else {
+                        showMessage({
+                            message: "Saknas",
+                            description: "Alla fält måste vara ifyllda",
+                            type: "warning",
+                        });
+                    }
+                    
                 }}
             />
         </ScrollView>
