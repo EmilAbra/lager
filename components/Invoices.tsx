@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 export default function Invoices(props) {
     return (
         <Stack.Navigator initialRouteName="InvoicesTable">
-            <Stack.Screen name="InvoicesTable">
+            <Stack.Screen name="InvoicesTable" options={{ headerShown: false }}>
                 {(screenProps) => <InvoicesTable {...screenProps} setIsLoggedIn={props.setIsLoggedIn} />}
             </Stack.Screen>
             <Stack.Screen name="Form" component={InvoicesForm} />

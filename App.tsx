@@ -54,10 +54,10 @@ export default function App() {
                     <Tab.Screen name="Lager" options={{ headerShown: false }}>
                         {() => <Home products={products} setProducts={setProducts} delivery={delivery} />}
                     </Tab.Screen>
-                    <Tab.Screen name="Plock">
+                    <Tab.Screen name="Plock" options={{ headerShown: false }}>
                         {() => <Pick setProducts={setProducts} allOrders={allOrders} setAllOrders={setAllOrders}/>}
                     </Tab.Screen>
-                    <Tab.Screen name="Inleveranser">
+                    <Tab.Screen name="Inleveranser" options={{ headerShown: false }}>
                         {() => <Deliveries delivery={delivery} setDelivery={setDelivery} />}
                     </Tab.Screen>
                     {isLoggedIn ?
@@ -65,7 +65,7 @@ export default function App() {
                             <Tab.Screen name="Skicka" options={{ headerShown: false }}>
                                 {() => <Ship allOrders={allOrders} setAllOrders={setAllOrders} />}
                             </Tab.Screen>
-                            <Tab.Screen name="Faktura">
+                            <Tab.Screen name="Faktura" options={{ headerShown: false }}>
                                 {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}
                             </Tab.Screen>
                         </>    
