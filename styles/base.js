@@ -11,9 +11,8 @@ export const baseMargin = {
 };
 
 export const image = {
-    width: 320,
+    width: '100%',
     height: 240,
-    marginLeft: 12
 };
 
 export const button = {
