@@ -63,7 +63,7 @@ export default function App() {
                     {isLoggedIn ?
                         <>
                             <Tab.Screen name="Skicka" options={{ headerShown: false }}>
-                                {() => <Ship allOrders={allOrders} />}
+                                {() => <Ship allOrders={allOrders} setAllOrders={setAllOrders} />}
                             </Tab.Screen>
                             <Tab.Screen name="Faktura">
                                 {() => <Invoices setIsLoggedIn={setIsLoggedIn} />}

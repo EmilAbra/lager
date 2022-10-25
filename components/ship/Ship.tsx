@@ -9,7 +9,7 @@ export default function Ship(props) {
     return (
         <Stack.Navigator initialRouteName="List">
             <Stack.Screen name="List">
-                {(screenProps) => <ShipList {...screenProps} allOrders={props.allOrders} />}
+                {(screenProps) => <ShipList {...screenProps} allOrders={props.allOrders} setAllOrders={props.setAllOrders} />}
             </Stack.Screen>
             <Stack.Screen name="Order" component={ShipOrder} />
         </Stack.Navigator>

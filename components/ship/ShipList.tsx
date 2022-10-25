@@ -1,7 +1,24 @@
+import { useEffect } from 'react';
 import { View, Text, Button, ScrollView } from "react-native";
 import { Base, Typography } from "../../styles";
 
-export default function ShipList({navigation, allOrders}) {
+import orderModel from "../../models/orders.ts";
+
+export default function ShipList({ route, navigation, allOrders, setAllOrders }) {
+    const { reload } = route.params || false;
+
+    if (reload) {
+        reloadOrders();
+    }
+
+    async function reloadOrders() {
+        setAllOrders(await orderModel.getOrders());
+    }
+
+    useEffect( () => {
+        reloadOrders();
+    }, []);
+
     const listOfOrders = allOrders
         .filter(order => order.status === "Packad")
         .map((order, index) => {
