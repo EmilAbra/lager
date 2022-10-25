@@ -7,8 +7,9 @@ export const header1 = {
 export const header2 = {
     color: '#32CD32',
     fontSize: 34,
-    marginBottom: 28,
-    paddingLeft: 12
+    marginBottom: 20,
+    paddingLeft: 12,
+    paddingRight: 12
 };
 
 export const header3 = {
