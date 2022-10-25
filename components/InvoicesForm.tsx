@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { Platform, View, Text, ScrollView, Button, TextInput } from "react-native";
+import { View, Text, ScrollView, Button } from "react-native";
 import { Base, Typography, Forms } from '../styles';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import Invoice from "../interfaces/invoice.ts"
 import DateDropDown from './InvoiceDateDropDown.tsx';
 import OrderDropDown from './OrderDropDown.tsx';
 
 import invoiceModel from "../models/invoices.ts";
-import orderModel from "../models/orders.ts";
 
 export default function InvoicesForm({ navigation }) {
 
